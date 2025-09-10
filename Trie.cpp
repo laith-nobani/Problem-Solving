@@ -117,4 +117,25 @@ struct Trie {
                solve2(cr->ch[i],st+char(i+'a'));
         }
     }
+ void solve3() {
+        queue<pair<Node*,int>> q;
+        q.push({root, 0});
+        while(!q.empty()) {
+            int sz = q.size();
+            ll mx = 0;
+            int level = q.front().second;
+            for(int i = 0; i < sz; i++) {
+                auto [node, c] = q.front();
+                q.pop();
+                for(int j = 0; j < 26; j++) {
+                    if(node->ch[j]) {
+                        mx = max(mx, node->ch[j]->prefix);
+                        q.push({node->ch[j], c+1});
+                    }
+                }
+            }
+
+            mp[level + 1] = mx;
+        }
+    }
 };
