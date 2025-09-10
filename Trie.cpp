@@ -16,6 +16,18 @@ struct Trie {
         root = new Node();
     }
 
+ ~Trie() {
+        clear(root);
+    }
+
+    void clear(Node* node) {
+        if (node == nullptr) return;
+        for (int i = 0; i < 26; ++i) {
+            clear(node->ch[i]);
+        }
+        delete node;
+    }
+
     void insert(string st) {
         Node *cr = root;
         for (int i = 0; i < st.size(); ++i) {
