@@ -156,4 +156,24 @@ struct Trie {
             }
         }
     }
+
+ bool solve12(Node *cr,int idx,int diff) {
+        if (idx > st.size() || diff > 1)
+            return false;
+        if(idx==st.size()) {
+                if(cr->End and diff!=0){
+                  return true;
+                }
+                else
+                  return false;
+        }
+        bool bo= false;
+        for (int i = 0; i < 3; ++i) {
+            if(cr->ch[i]!= nullptr){
+                bo|= solve11(cr->ch[i],idx+1,(diff+(st[idx]!=char(i+'a'))));
+            }
+        }
+        return bo;
+    }
+
 };
