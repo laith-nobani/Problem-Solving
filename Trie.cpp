@@ -138,4 +138,22 @@ struct Trie {
             mp[level + 1] = mx;
         }
     }
+
+   void koko(){
+        Node*cr=root;
+        solve11(cr);
+    }
+    void solve11(Node *cr,string st=""){
+        for (int i = 0; i < 2; ++i) {
+            if(cr->ch[i]!= nullptr){
+                string newSt = st + char(i + '0');
+                ll value = cr->ch[i]->prefix * (ll)newSt.size();
+                if(value > ans) {
+                    ans = value;
+                    ansString = newSt;
+                }
+                solve11(cr->ch[i], newSt);
+            }
+        }
+    }
 };
