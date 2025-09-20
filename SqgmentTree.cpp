@@ -12,7 +12,7 @@ bool vis[N][N];
 int dy[] = {0, 0, -1, 1};
 int dx[] = {-1, 1, 0, 0};
 using ll = long long;
-
+//
 struct SegmentTree {
     int sz;
     vector<ll> seg;
